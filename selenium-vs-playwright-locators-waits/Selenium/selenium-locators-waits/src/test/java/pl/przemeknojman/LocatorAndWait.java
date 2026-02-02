@@ -25,14 +25,14 @@ public class LocatorAndWait {
     }
 
     @Test
-    public void loginFormExample1() {
+    public void basicLocators() {
         driver.findElement(By.id("username")).sendKeys("testuser");
         driver.findElement(By.id("password")).sendKeys("password123");
         driver.findElement(By.id("login")).click();
     }
 
     @Test
-    public void waitingDynamicElementExample2() {
+    public void dynamicWaiting() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement saveBtn = wait.until(
                 ExpectedConditions.elementToBeClickable(By.id("save"))
@@ -41,7 +41,7 @@ public class LocatorAndWait {
     }
 
     @Test
-    public void shadowDOMExample3() {
+    public void handlingShadowDOM() {
         WebElement host = driver.findElement(By.cssSelector("custom-login"));
         SearchContext shadowRoot = host.getShadowRoot();
         WebElement username =
@@ -50,7 +50,7 @@ public class LocatorAndWait {
     }
 
     @Test
-    public void iframeExample4() {
+    public void handlingiFrames() {
         driver.switchTo().frame("login-frame");
 
         driver.findElement(By.id("username")).sendKeys("testuser");
@@ -60,10 +60,10 @@ public class LocatorAndWait {
     }
 
     @Test
-    public void multipleMatchingElementsExample5() {
-        WebElement button = driver.findElement(
-                By.xpath("//span[text()='John Smith']/following-sibling::button")
-        );
+    public void handlingMultipleMatchingElements() {
+        WebElement button = driver.findElement(By.id("deleteBtn"));
         button.click();
+        button.click();
+
     }
 }
