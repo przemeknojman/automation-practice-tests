@@ -61,9 +61,13 @@ public class LocatorAndWait {
 
     @Test
     public void handlingMultipleMatchingElements() {
+        driver.findElement(By.xpath("//span[text()='John Smith']/following-sibling::button")).click();
+    }
+
+    @Test
+    public void staleElementHandling() {
         WebElement button = driver.findElement(By.id("deleteBtn"));
         button.click();
         button.click();
-
     }
 }
